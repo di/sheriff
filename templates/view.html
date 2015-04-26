@@ -1,0 +1,27 @@
+<html>
+  <body>
+    <h1>Sheriff Sales in 19104</h1>
+    {% for listing in listings %}
+        <h2>Category: {{ listing.name }}</h2>
+        Auction Date: {{ listing.date }}
+
+        {% for property in listing.properties %}
+            <h3>{{ property.a1 }}</h3>
+            <ul>
+                <li>Opening Bid: {{ property.bid }}</li>
+                <li>Status: {{ property.status }}</li>
+                <li>Property Assessment: <a href="http://property.phila.gov/#account/{{ property.brt }}">http://property.phila.gov/#account/{{ property.brt }}</a></li>
+                <li><a href="https://www.google.com/maps/search/{{ property.a1 }} {{ property.a2 }}">Google Maps</a></li>
+            <li>
+                Neighbors:
+                <ul>
+                {% for neighbor in property.neighbors %}
+                    <li>{{ neighbor }}</li>
+                {% endfor %}
+                </ul>
+            </li>
+            </ul>
+        {% endfor %}
+    {% endfor %}
+  </body>
+<html>
